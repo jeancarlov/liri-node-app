@@ -1,0 +1,30 @@
+{
+  "name": "liri",
+  "version": "1.0.0",
+  "description": "This is a project to understand the npm and node processing system",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeancarlov/liri-node-app.git"
+  },
+  "keywords": [
+    "node.js",
+    "npm",
+    "project"
+  ],
+  "author": "Jean Carlo Valderrama",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeancarlov/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/jeancarlov/liri-node-app#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^7.0.0",
+    "moment": "^2.24.0",
+    "node-spotify-api": "^1.0.7"
+  }
+}
