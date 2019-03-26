@@ -16,7 +16,7 @@ var fs = require("fs");
 var command = process.argv;
 var commandReturn = process.argv[2];
 var commandInfo = process.argv[3];
-console.log("The command is " + commandReturn + "and the command info is " + commandInfo);
+// console.log("The command is " + commandReturn + "and the command info is " + commandInfo);
 
 // Here we create a for-loop that starts with **4** so we skip the path and node command from the command line
 // We will use this for loop to build a string of words from the commandInfo.
@@ -26,9 +26,8 @@ for (var i = 4; i < command.length; i++) {
 
 
 // The switch-case will direct which function gets run.
-function start() {
-    switch (commandReturn) {
 
+    switch (commandReturn) {
         case "movie-this":
             movieThis();
             break;
@@ -46,7 +45,7 @@ function start() {
             doWhatItSays();
             break;
     }
-}
+
 
 
 //phase 02 functions for the switch case  functions  
@@ -56,11 +55,11 @@ function start() {
 // function spotifyThisSong
 
 function spotifyThisSong() {
-    console.log("Spotify this " + commandInfo);
+    // console.log("Spotify this " + commandInfo);
 
     // this is no song is provided then the program by default will render "The Sign" by Ace of Base
     if (commandInfo === undefined) {
-        commandInfo = "The+Sign+Ace+of+Base";
+        commandInfo = "The Sign Ace of Base";
     }
     // response data retunrs one song    
     spotify.search({ type: 'track', query: commandInfo, limit: 1 })
@@ -68,13 +67,13 @@ function spotifyThisSong() {
             //   console.log(response);
             //   console.log(response.tracks.items[0]);
             var artists = ("Artists: " + response.tracks.items[0].album.artists[0].name);
-            // console.log(artists);
+            console.log(artists);
             var songName = ("Song: " + response.tracks.items[0].name);
-            // console.log(songName);
+            console.log(songName);
             var previewLink = ("Preview link: " + response.tracks.items[0].preview_url);
-            // console.log(previewLink);
+            console.log(previewLink);
             var albumName = ("Album: " + response.tracks.items[0].album.name);
-            // console.log(albumName);
+            console.log(albumName);
 
             // append to log.txt
             fs.appendFile("log.txt", artists + "\n" + songName + "\n" + previewLink + "\n" + albumName + "\n" + "" + "\n", function (error) {
@@ -82,7 +81,7 @@ function spotifyThisSong() {
                 if (error) {
                     console.log(error);
                 } else {
-                    console.log("Text is added to the log.txt");
+                    // console.log("Text is added to the log.txt");
                 }
             })
 
@@ -153,7 +152,7 @@ function movieThis() {
         function (response) {
             //   console.log(response)
 
-            var title = "Title" + response.data.Title;
+            var title = "Title: " + response.data.Title;
             // console.log(title);
             var year = "year" + response.data.Year;
             // console.log(year);
@@ -189,22 +188,37 @@ function movieThis() {
     // if error if found it will console log err
     function doWhatItSays(){  
     fs.readFile("random.txt", "utf8", function(err, data) {
-        if (error) {
+        //Check the error
+        if (err) {
         return console.log(error);
         }
         // reassign values and variables to text in random.txt file
          // Break the string down by comma separation and store the contents into the output array.
+        // var arrdata = data;
         var output = data.split(",");
+        var responseInfo = output[1].split(" ");
+        // console.log(responseInfo);
+        var action = output[0]
+         commandInfo = responseInfo[0]
+        // commandInfo = songName;
+
+        for (var i = 1; i < responseInfo.length; i++) {
+             commandInfo += "+" + responseInfo[i];
+            
+        }
+        // console.log(commandInfo);
+        // console.log(action);
+        spotifyThisSong();
+        
+    })
+   
+
+
+    
+
+
+
+
+
 
     }
-    // start();
-
-
-
-
-
-
-
-
-
-
