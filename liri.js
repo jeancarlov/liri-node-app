@@ -112,23 +112,23 @@ function concertThis() {
             // for loop for the venues
             for (let i = 0; i < response.data.length; i++) {
                 var venueName = "Venue name: " + response.data[i].venue.name;
-                // console.log(venueName);
+                console.log(venueName);
 
                 var venueLocation = "Venue location: " + response.data[i].venue.city + " , " + response.data[i].venue.region
-                // console.log(venueLocation);
+                console.log(venueLocation);
 
-                var venueDate = "Venue Date: " + (response.data[i].datetime); // check the format for moment .format("L")
-                // console.log(venueDate);
+                var venueDate = "Venue Date: " + moment(response.data[i].datetime).format("L"); // check the format for moment .format("L")
+                console.log(venueDate);
 
-                // append to log.txt
-                fs.appendFile("log.txt", venueName + "\n" + venueLocation + "\n" + venueDate + "\n" + "" + "\n", function (error) {
-                    // Checks to see if theres an error appending to the file
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        console.log("Text is added to the log.txt");
-                    }
-                })
+                // append to log.txt this is working, its muted just for the giphy image.
+                // fs.appendFile("log.txt", venueName + "\n" + venueLocation + "\n" + venueDate + "\n" + "" + "\n", function (error) {
+                //     // Checks to see if theres an error appending to the file
+                //     if (error) {
+                //         console.log(error);
+                //     } else {
+                //         console.log("Text is added to the log.txt");
+                //     }
+                // })
 
 
 
@@ -153,21 +153,21 @@ function movieThis() {
             //   console.log(response)
 
             var title = "Title: " + response.data.Title;
-            // console.log(title);
-            var year = "year" + response.data.Year;
-            // console.log(year);
-            var imdbRatingResult = "IMDB Rating" + response.data.imdbRating;
-            // console.log(imdbRatingResult);
-            var rottenTomatoesRating = " Rotten Tomatoes Rating" + response.data.Ratings[1].value;
-            //console.log(rottenTomatoesRating);
-            var country = "Country" + response.data.Country;
-            // console.log(country);
-            var language = "language" + response.data.Language;
-            // console.log(language);
-            var plot = "Plot" + response.data.Plot;
-            // console.log(plot);
-            var actors = "Actors" + response.data.Actors;
-            // console.log(actors);
+            console.log(title);
+            var year = "Year: " + response.data.Year;
+            console.log(year);
+            var imdbRatingResult = "IMDB Rating: " + response.data.imdbRating;
+            console.log(imdbRatingResult);
+            var rottenTomatoesRating = "Rotten Tomatoes Rating: " + response.data.Ratings[1].Value;
+            console.log(rottenTomatoesRating);
+            var country = "Country: " + response.data.Country;
+            console.log(country);
+            var language = "language: " + response.data.Language;
+            console.log(language);
+            var plot = "Plot: " + response.data.Plot;
+            console.log(plot);
+            var actors = "Actors: " + response.data.Actors;
+            console.log(actors);
 
 
             // append to log.txt
